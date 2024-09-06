@@ -6,6 +6,6 @@
   "unity": "2020.3",
   "dependencies": {
     "com.svermeulen.extenject": "9.2.0-stcf3",
-    "com.doublecoconut.dclogger": "1.0.5"
+    "com.doublecoconut.dclogger": "1.0.6"
   }
 }

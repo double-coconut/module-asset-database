@@ -17,12 +17,10 @@ MonoBehaviour:
   - Id: b36d9778-dbc1-4a13-a05e-51c814d9d4a8
     Name: Default
     OriginalName: Default
-    Enabled: 1
     IsEditing: 0
     ChannelColor: {r: 0.23137255, g: 0.7647059, b: 0.011764706, a: 1}
   - Id: 84e2d0d3-caf0-4f08-ad7e-78022c20a83c
     Name: Error
     OriginalName: Error
-    Enabled: 1
     IsEditing: 0
     ChannelColor: {r: 0.8862745, g: 0.02745098, b: 0.02745098, a: 1}
