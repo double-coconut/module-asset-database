@@ -21,8 +21,8 @@ MonoBehaviour:
     IsEditing: 0
     ChannelColor: {r: 0.23137255, g: 0.7647059, b: 0.011764706, a: 1}
   - Id: 84e2d0d3-caf0-4f08-ad7e-78022c20a83c
-    Name: New Channel
-    OriginalName: New Channel
+    Name: Error
+    OriginalName: Error
     Enabled: 1
     IsEditing: 0
-    ChannelColor: {r: 1, g: 1, b: 1, a: 1}
+    ChannelColor: {r: 0.8862745, g: 0.02745098, b: 0.02745098, a: 1}
