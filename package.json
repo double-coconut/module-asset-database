@@ -1,10 +1,11 @@
 {
   "name": "com.doublecoconut.assetdatabase",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "displayName": "Asste Database Service",
   "description": "Asset Database Service",
   "unity": "2020.3",
   "dependencies": {
-    "com.svermeulen.extenject": "9.2.0-stcf3"
+    "com.svermeulen.extenject": "9.2.0-stcf3",
+    "com.doublecoconut.dclogger": "1.0.4"
   }
 }

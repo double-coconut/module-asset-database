@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using Logger = DCLogger.Runtime.Logger;
+
 
 namespace Services.AssetDatabaseService
 {
@@ -14,7 +16,7 @@ namespace Services.AssetDatabaseService
 
         public virtual void Initialize()
         {
-            if(assets.Count == 0) return;
+            if (assets.Count == 0) return;
             _assets = new Dictionary<string, T>(assets.Count);
             foreach (T asset in assets)
             {
@@ -28,13 +30,18 @@ namespace Services.AssetDatabaseService
         {
             if (_assets == null || !_assets.ContainsKey(id))
             {
+#if DC_LOGGING
+                Logger.Log($"<color=red>Resource with ID : {id} not found inside of {name} DataBase!</color>",
+                    AssetDatabaseLogChannels.Default);
+#else
                 Debug.Log($"<color=red>Resource with ID : {id} not found inside of {name} DataBase!</color>");
+#endif
                 return null;
             }
 
             return _assets[id];
         }
-        
+
         public virtual bool Contains(string id)
         {
             return _assets.ContainsKey(id);
@@ -47,7 +54,8 @@ namespace Services.AssetDatabaseService
             {
                 return false;
             }
-            return  _assets.TryGetValue(id,out resource);
+
+            return _assets.TryGetValue(id, out resource);
         }
 
 #if UNITY_EDITOR
@@ -57,23 +65,29 @@ namespace Services.AssetDatabaseService
         {
             if (_assetsCount == 0)
                 _assetsCount = assets.Count;
-            
-            if(assets.Count == _assetsCount) return;
-            
+
+            if (assets.Count == _assetsCount) return;
+
             Dictionary<string, T> assetsDictionary = new Dictionary<string, T>();
-           
+
             foreach (T asset in assets)
             {
                 if (assetsDictionary.ContainsKey(asset.Id))
                 {
+#if DC_LOGGING
+                    Logger.LogError($"You have tried to add asset with ID : {asset.Id} which is already exist!",
+                        AssetDatabaseLogChannels.Error);
+#else
                     Debug.LogError($"You have tried to add asset with ID : {asset.Id} which is already exist!");
+#endif
                     continue;
                 }
+
                 assetsDictionary.Add(asset.Id, asset);
             }
-            
+
             List<T> assetsList = new List<T>();
-            foreach (KeyValuePair<string,T> asset in assetsDictionary)
+            foreach (KeyValuePair<string, T> asset in assetsDictionary)
             {
                 assetsList.Add(asset.Value);
             }
@@ -82,6 +96,5 @@ namespace Services.AssetDatabaseService
             _assetsCount = assets.Count;
         }
 #endif
-      
     }
 }
