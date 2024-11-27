@@ -20,7 +20,7 @@ namespace Services.AssetDatabaseService
             _assets = new Dictionary<string, T>(assets.Count);
             foreach (T asset in assets)
             {
-                if (_assets == null) continue;
+                if (asset == null) continue;
                 if (_assets.ContainsKey(asset.Id)) continue;
                 _assets.Add(asset.Id, asset);
             }
